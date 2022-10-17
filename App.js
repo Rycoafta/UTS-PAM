@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { View, StyleSheet, Button } from 'react-native';
 import { Video, AVPlaybackStatus } from 'expo-av';
+import * as SplashScreen from 'expo-splash-screen';
+import { Asset } from 'expo-asset';
+import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
   const video = React.useRef(null);
