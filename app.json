@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "uts-pam-159",
+    "slug": "uts-pam-159",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "android": {
+      "package": "com.ryco.utspam159"
+    }
+  },
+  "name": "uts-pam-159"
+}
