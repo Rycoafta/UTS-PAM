@@ -1,8 +1,12 @@
-# UTS PAM
-### Menggunakan expo react native
+# UTS-PAM-159
+### Sebuah aplikasi pemutar video 
 
 ### Daftar package yang digunakan (expo)
-- expo 
+ - expo-asset
+ - expo-av,
+ - expo-splash-screen
+ - expo-status-bar
+ - expo-updates
 
 ### Cara menginstall aplikasi (dalam mode pengembangan)
 
