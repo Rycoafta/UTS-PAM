@@ -1,5 +1,5 @@
-# Judul
-### Deskripsi
+# UTS PAM
+### Menggunakan expo react native
 
 ### Daftar package yang digunakan (expo)
 - expo 
