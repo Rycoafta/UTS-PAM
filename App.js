@@ -1,53 +1,43 @@
-import * as React from 'react';
-import { View, StyleSheet, Button } from 'react-native';
-import { Video, AVPlaybackStatus } from 'expo-av';
-import * as SplashScreen from 'expo-splash-screen';
-import { Asset } from 'expo-asset';
-import { StatusBar } from 'expo-status-bar';
+import React from "react";
+import { NativeBaseProvider, StatusBar } from "native-base";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useFonts, Poppins_700Bold } from "@expo-google-fonts/poppins";
+import {
+  OpenSans_700Bold,
+  OpenSans_400Regular,
+} from "@expo-google-fonts/open-sans";
+import Program from "./Program";
+import Welcome from "./Welcome";
+import Profil from "./Profil";
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
-  const video = React.useRef(null);
-  const [status, setStatus] = React.useState({});
+  let [fontsLoaded] = useFonts({
+    Poppins_700Bold,
+    OpenSans_700Bold,
+    OpenSans_400Regular,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
-    <View style={styles.container}>
-      <Video
-        ref={video}
-        style={styles.video}
-        source={{
-          uri: 'https://gdurl.com/srdnH',
-          type: 'video/mp4'
+    <NativeBaseProvider>
+      <NavigationContainer>
+        <StatusBar hidden={true} />
+        <Stack.Navigator
+          initialRouteName="Welcome"
+          screenOptions={{
+            headerShown: false,
           }}
-        useNativeControls
-        resizeMode="contain"
-        isLooping
-        onPlaybackStatusUpdate={status => setStatus(() => status)}
-      />
-      <View style={styles.buttons}>
-        <Button
-          title={status.isPlaying ? 'Pause' : 'Play'}
-          onPress={() =>
-            status.isPlaying ? video.current.pauseAsync() : video.current.playAsync()
-          }
-        />
-      </View>
-    </View>
+        >
+          <Stack.Screen name="Welcome" component={Welcome} />
+          <Stack.Screen name="Program" component={Program} />
+          <Stack.Screen name="Profil" component={Profil} />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </NativeBaseProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    backgroundColor: '#ecf0f1',
-  },
-  video: {
-    alignSelf: 'center',
-    width: 320,
-    height: 200,
-  },
-  buttons: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
